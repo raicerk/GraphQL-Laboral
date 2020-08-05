@@ -1,8 +1,8 @@
-import { ApolloServer, gql } from 'apollo-server';
-import schema from './schema';
+import schema from "./schema";
+import { ApolloServer } from 'apollo-server';
 
 const server = new ApolloServer({
-    schema
+  schema,
 });
 
 server.listen(3000).then(({ url }) => console.log(`Server running at ${url} `));
