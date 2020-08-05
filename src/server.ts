@@ -1,12 +1,14 @@
-import { ApolloServer, gql } from "apollo-server";
-const { MongoClient } = require('mongodb');
+import { ApolloServer, gql } from 'apollo-server';
+import { MongoClient, Db } from 'mongodb';
+
 
 const url = 'mongodb://localhost:27017';
-let db: any;
+
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(function (err:any) {
+let db: Db;
+client.connect((err:Error) => {
     console.log("MONGOdb connected");
-    db = client.db("users"); //mongodb database name
+    db = client.db("users");
 });
 
 const typeDefs = gql`
