@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:dev": "npm run build:dev",
+    "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,17 @@
   "bugs": {
     "url": "https://github.com/raicerk/graphqllaboral/issues"
   },
-  "homepage": "https://github.com/raicerk/graphqllaboral#readme"
+  "homepage": "https://github.com/raicerk/graphqllaboral#readme",
+  "dependencies": {
+    "apollo-server": "^2.16.1",
+    "http": "0.0.1-security",
+    "mongodb": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^14.0.27",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
 }
