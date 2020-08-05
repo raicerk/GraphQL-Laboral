@@ -8,7 +8,7 @@
     "start": "node server.js",
     "start:dev": "npm run build:dev",
     "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
-    "build": "tsc -p ."
+    "build": "tsc -p . && ncp src/schema dist/schema"
   },
   "repository": {
     "type": "git",
