@@ -1,0 +1,8 @@
+type Query {
+  my_query:[counters]
+  hello: String
+}
+type counters{
+_id:String,
+seq:String
+}
