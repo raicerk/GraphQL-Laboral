@@ -1,0 +1,24 @@
+{
+  "name": "graphqllaboral",
+  "version": "1.0.0",
+  "description": "API GraphQL para informacion de ofertas laborales",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raicerk/graphqllaboral.git"
+  },
+  "keywords": [
+    "graphql",
+    "js"
+  ],
+  "author": "Juan Mora",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raicerk/graphqllaboral/issues"
+  },
+  "homepage": "https://github.com/raicerk/graphqllaboral#readme"
+}
