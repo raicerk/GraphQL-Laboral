@@ -13,7 +13,8 @@ module.exports = {
     "createDefaultProgram": true
   },
   "plugins": [
-    "prettier"
+    "prettier",
+    "import"
   ],
   "extends": [
     "plugin:@typescript-eslint/recommended",
@@ -43,12 +44,11 @@ module.exports = {
     "semi": "off",
     "require-atomic-updates": "off",
     "class-methods-use-this": "off",
-    // "import/order": ["error", { "groups": ["builtin", "external", "index", "sibling", "parent"], 'newlines-between': 'always'}],
+    "import/order": ["error", { "groups": ["builtin", "external", "index", "sibling", "parent"], 'newlines-between': 'always'}],
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/array-type": ["error", { "default": "array"}],
     "@typescript-eslint/brace-style": ["error","1tbs", { "allowSingleLine": true }],
     "@typescript-eslint/camelcase": "off",
-    // "@typescript-eslint/class-name-casing": ["error", { "allowUnderscorePrefix": true }],
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
     "@typescript-eslint/explicit-function-return-type": "error",

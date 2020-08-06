@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-export default {
-    MONGOPORT: process.env.MONGOPORT || 27017,
-    MONGOHOST: process.env.MONGOHOST || 'localhost',
-    MONGOPROTOCOL: process.env.MONGOPROTOCOL || 'mongodv+srv',
+export const mongo = {
+    PROTOCOL: process.env.MONGOPROTOCOL || 'mongodv+srv',
+    PORT: process.env.MONGOPORT || 27017,
+    HOST: process.env.MONGOHOST || 'localhost'
 };

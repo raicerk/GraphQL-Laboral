@@ -1,8 +1,9 @@
 import { IResolvers } from 'graphql-tools';
 import { MongoClient, Db } from 'mongodb';
-import config from './config';
 
-const client = new MongoClient(`${config.MONGOPROTOCOL}://${config.MONGOHOST}:${config.MONGOPORT}`, { useNewUrlParser: true, useUnifiedTopology: true });
+import { mongo } from './config';
+
+const client = new MongoClient(`${mongo.PROTOCOL}://${mongo.HOST}:${mongo.PORT}`, { useNewUrlParser: true, useUnifiedTopology: true });
 let db: Db;
 
 client.connect((err: Error) => {
