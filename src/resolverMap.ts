@@ -26,57 +26,59 @@ const resolverMap: IResolvers = {
       args: { where: Filtros }
     ): Promise<Salarios[]> => {
       const { field, value } = args.where;
+      const Agregatesalario = [
+        {
+          $unwind: {
+            path: "$skill",
+          },
+        },
+        {
+          $match: {
+            [field]: value,
+            fecha: { $gt: "2018-12-01T00:00:00" },
+            sueldominimo: {
+              $ne: null,
+            },
+          },
+        },
+        {
+          $group: {
+            _id: "$skill",
+            averageMin: {
+              $avg: "$sueldominimo",
+            },
+            averageMax: {
+              $avg: "$sueldomaximo",
+            },
+            count: {
+              $sum: 1,
+            },
+          },
+        },
+        {
+          $addFields: {
+            suma: {
+              $sum: ["$averageMax", "$averageMin"],
+            },
+          },
+        },
+        {
+          $addFields: {
+            media: {
+              $divide: ["$suma", 2],
+            },
+          },
+        },
+        {
+          $project: {
+            suma: 0,
+          },
+        },
+      ];
+      
       const snapshot = await db
         .collection("laboral")
-        .aggregate([
-          {
-            $unwind: {
-              path: "$skill",
-            },
-          },
-          {
-            $match: {
-              [field]: value,
-              fecha: { $gt: "2018-12-01T00:00:00" },
-              sueldominimo: {
-                $ne: null,
-              },
-            },
-          },
-          {
-            $group: {
-              _id: "$skill",
-              averageMin: {
-                $avg: "$sueldominimo",
-              },
-              averageMax: {
-                $avg: "$sueldomaximo",
-              },
-              count: {
-                $sum: 1,
-              },
-            },
-          },
-          {
-            $addFields: {
-              suma: {
-                $sum: ["$averageMax", "$averageMin"],
-              },
-            },
-          },
-          {
-            $addFields: {
-              media: {
-                $divide: ["$suma", 2],
-              },
-            },
-          },
-          {
-            $project: {
-              suma: 0,
-            },
-          },
-        ])
+        .aggregate(Agregatesalario)
         .toArray();
 
       return snapshot.map((iter: SalariosDetalle) => ({
