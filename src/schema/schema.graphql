@@ -1,9 +1,54 @@
 type Query {
-  my_query: [counters]
   hello: String
   estadisticas: [Int]
+  Laborales: [Laboral]
+  LaboralSalarios(where: FieldBy): [Salario]
 }
-type counters {
-  _id: String
-  seq: String
+
+input FieldBy {
+  field: String
+  value: String
+  in: String
+}
+
+"""
+Campos disponibles de las ofertas laborales y por los cuales se puede filtrar
+"""
+type Laboral {
+  "Fecha de la oferta"
+  fecha: String
+  "Pais de publicacion"
+  pais: String
+  "Link de acceso"
+  link: String
+  "Clasificacion de la oferta"
+  clasificacion: String
+  "Sueldo ofrecido en la oferta"
+  sueldo: String
+  "Sueldo Minimo ofrecido en la oferta"
+  sueldominimo: Int
+  "Sueldo Maximo ofrecido en la oferta"
+  sueldomaximo: Int
+  "Tipo de moneda del sueldo ofrecido en la oferta"
+  sueldomoneda: String
+  "Modalidad de tiempo de empleo ofrecido en la oferta"
+  sueldotipotiempo: String
+  "Skill requeridos en la oferta"
+  skill: [String]
+}
+
+"""
+Campos disponibles de las ofertas laborales y por los cuales se puede filtrar
+"""
+type Salario {
+  "Nombre del skill"
+  skill: String
+  "Promedio de salario minimo ofrecido en la oferta"
+  salariominimo: Int
+  "Promedio de salario maximo ofrecido en la oferta"
+  salariomaximo: Int
+  "Media de salario ofrecido en la oferta"
+  media: Int
+  "Cantidad de ofertas que incluyen el skill indicadado"
+  cantidad: Int
 }
