@@ -1,6 +1,7 @@
 type Query {
   my_query: [counters]
   hello: String
+  estadisticas: [Int]
 }
 type counters {
   _id: String

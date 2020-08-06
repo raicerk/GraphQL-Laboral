@@ -30,7 +30,8 @@
     "apollo-server": "^2.16.1",
     "graphql": "^15.3.0",
     "mongodb": "^3.6.0",
-    "ncp": "^2.0.0"
+    "ncp": "^2.0.0",
+    "outliers": "0.0.3"
   },
   "devDependencies": {
     "@types/graphql": "^14.5.0",
