@@ -13,11 +13,3 @@ client.connect((err: Error) => {
         console.log(err);
     }
 });
-
-
-
-
-
-
-// const uri = "mongodb+srv://raicerk:<password>@laboral-k4r2w.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority";
-
