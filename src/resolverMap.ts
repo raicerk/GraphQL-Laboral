@@ -1,10 +1,10 @@
 import { IResolvers } from 'graphql-tools';
 import { MongoClient, Db } from 'mongodb';
+import config from './config';
 
-const url = 'mongodb://localhost:27017';
-
-const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(`${config.MONGOPROTOCOL}://${config.MONGOHOST}:${config.MONGOPORT}`, { useNewUrlParser: true, useUnifiedTopology: true });
 let db: Db;
+
 client.connect((err: Error) => {
     console.log("MONGOdb connected");
     db = client.db("users");
@@ -12,6 +12,7 @@ client.connect((err: Error) => {
         console.log(err);
     }
 });
+
 const resolverMap: IResolvers = {
     Query: {
         hello: (): string => {
