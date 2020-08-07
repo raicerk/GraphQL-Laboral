@@ -36,50 +36,44 @@ const resolverMap: IResolvers = {
           $match: {
             [field]: value,
             fecha: { $gt: "2018-12-01T00:00:00" },
-            sueldominimo: {
-              $ne: null,
-            },
+            $and: [
+              {
+                sueldominimo: {
+                  $ne: null,
+                },
+              },
+              {
+                sueldominimo: {
+                  $ne: "",
+                },
+              },
+            ],
           },
         },
         {
           $group: {
             _id: "$skill",
-            averageMin: {
-              $avg: "$sueldominimo",
+            sueldominimo: {
+              $push: "$sueldominimo",
             },
-            averageMax: {
-              $avg: "$sueldomaximo",
-            },
-            count: {
-              $sum: 1,
+            sueldomaximo: {
+              $push: "$sueldomaximo",
             },
           },
         },
         {
-          $addFields: {
-            suma: {
-              $sum: ["$averageMax", "$averageMin"],
-            },
-          },
-        },
-        {
-          $addFields: {
-            media: {
-              $divide: ["$suma", 2],
-            },
-          },
-        },
-        {
-          $project: {
-            suma: 0,
+          $sort: {
+            _id: 1,
           },
         },
       ];
-      
+
       const snapshot = await db
         .collection("laboral")
         .aggregate(Agregatesalario)
         .toArray();
+
+      console.log(snapshot);
 
       return snapshot.map((iter: SalariosDetalle) => ({
         skill: iter._id,

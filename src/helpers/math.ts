@@ -1,0 +1,1 @@
+export const avg = (arreglo: number[]): number => arreglo.reduce((a: number,b: number) => a + b, 0) / arreglo.length;
