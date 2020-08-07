@@ -14,7 +14,7 @@ export interface Salarios {
   cantidad: number;
 }
 
-export interface Temporal {
+export interface SalariosPorSkill {
   _id: string;
   sueldominimo: number[];
   sueldomaximo: number[];

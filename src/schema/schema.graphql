@@ -1,6 +1,5 @@
 type Query {
   hello: String
-  estadisticas: [Int]
   Laborales: [Laboral]
   LaboralSalarios(where: FieldBy): [Salario]
 }

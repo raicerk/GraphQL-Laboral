@@ -1,9 +1,9 @@
 import { db } from "./client";
 
 import { Filtros } from "../interfaces/filtros";
-import { Temporal } from "../interfaces/salarios";
+import { SalariosPorSkill } from "../interfaces/salarios";
 
-export const SalariosPorSkill = async (where: Filtros): Promise<Temporal[]> => {
+export const dataPorSkill = async (where: Filtros): Promise<SalariosPorSkill[]> => {
   const Agregatesalario = [
     {
       $unwind: {
