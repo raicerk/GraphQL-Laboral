@@ -13,3 +13,9 @@ export interface Salarios {
   media: number;
   cantidad: number;
 }
+
+export interface Temporal {
+  _id: string;
+  sueldominimo: number[];
+  sueldomaximo: number[];
+}
