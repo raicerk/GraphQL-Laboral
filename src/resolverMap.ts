@@ -4,8 +4,8 @@ import { Salarios } from "./interfaces/salarios";
 import { Filtros } from "./interfaces/filtros";
 import { Laborales } from "./data/laborales";
 import { interSalarios } from "./interactors/salarios";
-import { interLaboralesAgrupadosPorMes } from "./interactors/laboral";
-import { SkillAgrupados } from "./interfaces/laboral";
+import { interLaboralesAgrupadosPorMes, interLaboralesAcumulados } from "./interactors/laboral";
+import { SkillAgrupados, SkillAcumulados } from "./interfaces/laboral";
 
 const resolverMap: IResolvers = {
   Query: {
@@ -26,6 +26,12 @@ const resolverMap: IResolvers = {
       args: { where: Filtros }
     ): Promise<SkillAgrupados[]> => {
       return await interLaboralesAgrupadosPorMes(args.where);
+    },
+    LaboralAcumulado: async (
+      root: string,
+      args: { where: Filtros }
+    ): Promise<SkillAcumulados[]> => {
+      return await interLaboralesAcumulados(args.where);
     },
   },
 };
