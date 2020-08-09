@@ -10,7 +10,7 @@ export const Laborales = async (): Promise<string[]> => {
     .toArray();
 };
 
-export const LaboralesAgrupadosPorMes = async (where: Filtros): Promise<Laboral[]> => {
+export const LaboralesConFiltro = async (where: Filtros): Promise<Laboral[]> => {
   return await db
     .collection("laboral")
     .find({ [where.field]: where.value, fecha: { $gt: "2018-12-01T00:00:00" } })

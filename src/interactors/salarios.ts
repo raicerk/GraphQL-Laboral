@@ -1,6 +1,6 @@
 import { avg } from '../helpers/math';
 import { SalariosPorSkill, Salarios } from '../interfaces/salarios';
-import { dataPorSkill } from '../data/sueldos';
+import { dataPorSkill } from '../data/salarios';
 import { Filtros } from '../interfaces/filtros';
 import {outlier} from '../helpers/stadistic';
 

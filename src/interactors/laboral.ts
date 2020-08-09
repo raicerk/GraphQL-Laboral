@@ -1,4 +1,4 @@
-import { LaboralesAgrupadosPorMes } from "../data/laborales";
+import { LaboralesConFiltro } from "../data/laborales";
 import { Filtros } from "../interfaces/filtros";
 import { SkillAgrupados, Laboral } from "../interfaces/laboral";
 
@@ -6,7 +6,7 @@ export const interLaboralesAgrupadosPorMes = async (
   where: Filtros
 ): Promise<SkillAgrupados[]> => {
 
-  const data = await LaboralesAgrupadosPorMes(where);
+  const data = await LaboralesConFiltro(where);
 
   const rawSkills = data.reduce(
     (acc: string[], it) => ((acc = [...acc, ...it.skill]), acc),
