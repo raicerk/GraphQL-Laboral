@@ -2,6 +2,7 @@ type Query {
   hello: String
   Laborales: [Laboral]
   LaboralSalarios(where: FieldBy): [Salario]
+  LaboralAgrupadoPorMes(where: FieldBy): [Agrupacion]
 }
 
 input FieldBy {
@@ -50,4 +51,24 @@ type Salario {
   media: Int
   "Cantidad de ofertas que incluyen el skill indicadado"
   cantidad: Int
+}
+
+"""
+Datos de ofertas laborales por año mes y cantidad
+"""
+type Datos {
+  "Año mes del skill"
+  fecha: String
+  "Cantidad de ofertas laborales donde el skill es solicitado para la fecha que se indica"
+  cantidad: Int
+}
+
+"""
+Campos disponibles para mostrar datos agrupados
+"""
+type Agrupacion {
+  "Nombre del skill"
+  skill: String
+  "Datos agrupados del skill"
+  datos: [Datos]
 }
