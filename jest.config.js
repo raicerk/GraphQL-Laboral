@@ -20,6 +20,11 @@ module.exports = {
   },
   collectCoverageFrom: [
     'src/**/*.ts',
+    '!**/data/**',
+    '!**/config.ts',
+    '!**/schema.ts',
+    '!**/server.ts',
+    '!**/resolverMap.ts',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
   moduleNameMapper: {
