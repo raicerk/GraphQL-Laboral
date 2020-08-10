@@ -7,9 +7,6 @@ const client = new MongoClient(`${mongo.PROTOCOL}://${mongo.USER}:${mongo.PASSWO
 export let db: Db;
 
 client.connect((err: Error) => {
-    console.log("MONGOdb connected");
     db = client.db(mongo.NAMEDB);
-    if (err) {
-        console.log(err);
-    }
+    err ? console.log(err.message) : console.log('Database mongo connected');
 });
