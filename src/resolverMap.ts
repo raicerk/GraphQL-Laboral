@@ -1,11 +1,11 @@
 import { IResolvers } from "graphql-tools";
 
 import { Salarios } from "./interfaces/salarios";
-import { Filtros } from "./interfaces/filtros";
+import { Filtros, Country, Skill } from "./interfaces/filtros";
 import { Orden } from "./interfaces/ordenar";
 import { Laborales } from "./data/laborales";
 import { interSalarios } from "./interactors/salarios";
-import { interLaboralesAgrupadosPorMes, interLaboralesAcumulados, interLaboral } from "./interactors/laboral";
+import { interLaboralesAgrupadosPorMes, interLaboralesAcumulados, interLaboral, interLaboralConOtrosSkill } from "./interactors/laboral";
 import { SkillAgrupados, SkillAcumulados, Laboral } from "./interfaces/laboral";
 
 const resolverMap: IResolvers = {
@@ -39,6 +39,12 @@ const resolverMap: IResolvers = {
       args: { where: Filtros }
     ): Promise<SkillAcumulados[]> => {
       return await interLaboralesAcumulados(args.where);
+    },
+    LaboralConOtrosSkill: async (
+      root: string,
+      args: { country: Country; skill: Skill }
+    ): Promise<SkillAcumulados[]> => {
+      return await interLaboralConOtrosSkill(args.country, args.skill);
     },
   },
 };

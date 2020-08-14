@@ -1,9 +1,10 @@
-import { LaboralesConFiltro, LaboralesConFiltroYorden } from "../data/laborales";
-import { Filtros } from "../interfaces/filtros";
+import { LaboralesConFiltro, LaboralesConFiltroYorden, LaboralConOtrosSkill } from "../data/laborales";
+import { Filtros, Country, Skill } from "../interfaces/filtros";
 import {
   SkillAgrupados,
   Laboral,
   SkillAcumulados,
+  otrosSkill,
 } from "../interfaces/laboral";
 import { Orden } from "../interfaces/ordenar";
 
@@ -78,4 +79,12 @@ export const interLaboral = async (
   order: Orden
 ): Promise<Laboral[]> => {
   return await LaboralesConFiltroYorden(where, order);
+};
+
+export const interLaboralConOtrosSkill = async (
+  country: Country,
+  skill: Skill
+): Promise<SkillAcumulados[]> => {
+  const otrosSkills = await LaboralConOtrosSkill(country, skill);
+  return otrosSkills.map((iter:otrosSkill)=>({skill: iter._id, cantidad: iter.count}));
 };

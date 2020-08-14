@@ -25,3 +25,8 @@ export interface Laboral {
   sueldotipotiempo: string;
   skill: [string];
 }
+
+export interface otrosSkill{
+  _id: string;
+  count: number;
+} 

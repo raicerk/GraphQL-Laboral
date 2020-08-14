@@ -5,6 +5,7 @@ type Query {
   LaboralSalarios(where: FieldBy): [Salario]
   LaboralAgrupadoPorMes(where: FieldBy): [Agrupacion]
   LaboralAcumulado(where: FieldBy): [Cantidad]
+  LaboralConOtrosSkill(country: Country, skill: Skill): [Cantidad]
 }
 
 input OrderBy {
@@ -18,7 +19,7 @@ input FieldBy {
   in: String
 }
 
-enum Orientation{
+enum Orientation {
   DESC
   ASC
 }
@@ -93,4 +94,12 @@ type Cantidad {
   skill: String
   "Cantidad de skill agrupados"
   cantidad: Int
+}
+
+input Country {
+  value: String
+}
+
+input Skill {
+  value: String
 }
