@@ -1,10 +1,11 @@
-import { LaboralesConFiltro } from "../data/laborales";
+import { LaboralesConFiltro, LaboralesConFiltroYorden } from "../data/laborales";
 import { Filtros } from "../interfaces/filtros";
 import {
   SkillAgrupados,
   Laboral,
   SkillAcumulados,
 } from "../interfaces/laboral";
+import { Orden } from "../interfaces/ordenar";
 
 export const interLaboralesAgrupadosPorMes = async (
   where: Filtros
@@ -70,4 +71,11 @@ export const interLaboralesAcumulados = async (
     .sort((x, y) => (x.skill > y.skill ? 1 : -1));
 
   return agrupados;
+};
+
+export const interLaboral = async (
+  where: Filtros,
+  order: Orden
+): Promise<Laboral[]> => {
+  return await LaboralesConFiltroYorden(where, order);
 };

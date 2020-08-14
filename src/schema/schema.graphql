@@ -1,15 +1,26 @@
 type Query {
   hello: String
+  Laboral(where: FieldBy, order: OrderBy): [Laboral]
   Laborales: [Laboral]
   LaboralSalarios(where: FieldBy): [Salario]
   LaboralAgrupadoPorMes(where: FieldBy): [Agrupacion]
   LaboralAcumulado(where: FieldBy): [Cantidad]
 }
 
+input OrderBy {
+  by: String
+  orientation: Orientation
+}
+
 input FieldBy {
   field: String
   value: String
   in: String
+}
+
+enum Orientation{
+  DESC
+  ASC
 }
 
 """
