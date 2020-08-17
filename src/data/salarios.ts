@@ -1,9 +1,17 @@
+import { Tedis } from 'tedis';
+
 import { db } from "./client";
 
+import { port_redis } from "../config";
 import { Filtros } from "../interfaces/filtros";
 import { SalariosPorSkill } from "../interfaces/salarios";
 
+const redis_client = new Tedis({
+  port: parseInt(port_redis)
+});
+
 export const dataPorSkill = async (where: Filtros): Promise<SalariosPorSkill[]> => {
+  const id = `${where.field}_${where.value}`;
   const Agregatesalario = [
     {
       $unwind: {
@@ -46,5 +54,15 @@ export const dataPorSkill = async (where: Filtros): Promise<SalariosPorSkill[]> 
     },
   ];
 
-  return await db.collection("laboral").aggregate(Agregatesalario).toArray();
+  let datos: SalariosPorSkill[] = [];
+  const data = await redis_client.get(id);
+
+  if (data != null) {
+    datos = JSON.parse(data.toString());
+  } else {
+    datos = await db.collection("laboral").aggregate(Agregatesalario).toArray();
+    redis_client.setex(id, 5, JSON.stringify(datos));
+  }
+
+  return datos;
 };

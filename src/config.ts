@@ -11,3 +11,5 @@ export const mongo = {
     USER: process.env.MONGOUSER || '',
     PASSWORD: process.env.MONGOPASSWORD || ''
 };
+
+export const port_redis = process.env.PORTREDIS || '6379';

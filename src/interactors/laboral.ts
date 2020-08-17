@@ -86,5 +86,5 @@ export const interLaboralConOtrosSkill = async (
   skill: Skill
 ): Promise<SkillAcumulados[]> => {
   const otrosSkills = await LaboralConOtrosSkill(country, skill);
-  return otrosSkills.map((iter:otrosSkill)=>({skill: iter._id, cantidad: iter.count}));
+  return otrosSkills.map((iter: otrosSkill) => ({ skill: iter._id, cantidad: iter.count }));
 };
