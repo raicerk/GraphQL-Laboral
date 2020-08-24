@@ -9,7 +9,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -17,5 +17,28 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: npm ci
-    - run: npm run test
+    - name: npm install and test
+      run: |
+        npm ci
+        npm run test
+      env:
+        CI: true
+  
+
+  deploy:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+    - name: SSH and deploy node app
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd /opt/GraphQL-Laboral/
+          git pull origin master
+          npm install --production
+          npm run build
+          pm2 restart APITechTrend
