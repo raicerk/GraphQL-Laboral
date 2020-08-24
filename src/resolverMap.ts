@@ -11,7 +11,7 @@ import { SkillAgrupados, SkillAcumulados, Laboral } from "./interfaces/laboral";
 const resolverMap: IResolvers = {
   Query: {
     hello: (): string => {
-      return `👋 Hello world! 👋`;
+      return `👋 Hello mundo! 👋`;
     },
     Laboral: async (
       root: string,
