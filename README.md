@@ -1,4 +1,5 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-green.svg?style=flat-square)](#contributors)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=raicerk_GraphQL-Laboral&metric=alert_status)](https://sonarcloud.io/dashboard?id=raicerk_GraphQL-Laboral)
 
 # API GraphQL Laboral
 
