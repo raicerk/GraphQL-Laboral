@@ -38,7 +38,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           cd /opt/GraphQL-Laboral/
-          git pull origin master
-          npm install --production
-          npm run build
+          git pull origin master && 
+          npm install --production && 
+          npm run build && 
           pm2 restart APITechTrend
