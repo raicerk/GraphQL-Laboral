@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI & CD
 
 on:
   push:
@@ -41,7 +41,6 @@ jobs:
           git pull origin master
           export NVM_DIR=~/.nvm
           source ~/.nvm/nvm.sh
-          npm --help
           npm ci
           npm run build
           pm2 restart APITechTrend
