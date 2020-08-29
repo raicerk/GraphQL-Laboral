@@ -1,7 +1,7 @@
 import { db } from "./client";
 
 import { Filtros, Country, Skill } from "../interfaces/filtros";
-import { Laboral, SkillAcumulados, otrosSkill } from "../interfaces/laboral";
+import { Laboral, otrosSkill } from "../interfaces/laboral";
 import { Orden } from "../interfaces/ordenar";
 
 export const Laborales = async (): Promise<string[]> => {
