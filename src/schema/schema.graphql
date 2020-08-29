@@ -9,19 +9,25 @@ type Query {
 }
 
 input OrderBy {
-  by: String
+  by: By
   orientation: Orientation
 }
 
 input FieldBy {
-  field: String
+  field: By
   value: String
-  in: String
 }
 
 enum Orientation {
   DESC
   ASC
+}
+
+enum By{
+  pais
+  fecha
+  clasificacion
+  link
 }
 
 """
